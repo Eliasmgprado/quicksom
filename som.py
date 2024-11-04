@@ -704,7 +704,7 @@ class SOM(nn.Module):
 
         local_min = peak_local_max(-self.umat, min_distance=min_distance)
         n_local_min = local_min.shape[0]
-        clusterer = AgglomerativeClustering(affinity='precomputed', linkage='average', n_clusters=n_local_min)
+        clusterer = AgglomerativeClustering(metric='precomputed', linkage='average', n_clusters=n_local_min)
         try:
             labels = clusterer.fit_predict(self.all_to_all_dist)
         except ValueError as e:
